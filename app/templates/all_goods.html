@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <h1>Here is our goods</h1>
+    {% include 'flash_messages_component.html' %}
+    <div class="container">
+        {% for good in goods %}
+            <div class="row">
+                <div class="col-9">
+                    <a href="{{ url_for('good.get_good', good_id=good['id']) }}">
+                        <h2>{{ good['name'] }}</h2>
+                        <p>{{ good['description'] }}</p>
+                    </a>
+                </div>
+                <div class="col-3">
+                    <span>
+                        <a href="{{ url_for('good.edit_good', good_id=good['id']) }}">
+                            <span class="badge text-bg-warning">Edit</span>
+                        </a>
+                        <a href="{{ url_for('good.delete_good', good_id=good['id']) }}">
+                            <span class="badge text-bg-danger">Delete</span>
+                        </a>
+                    </span>
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+
+{% endblock main %}

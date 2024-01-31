@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <h1>{% block title %}Create new good{% endblock title %}</h1>
+    {% include 'flash_messages_component.html' %}
+    <form method="post">
+        <div class="form-group">
+            <label class="form-label" for="name">Name</label>
+            <input class="form-control" type="text" name="name" value="{{ request.form['name'] }}">
+            <label class="form-label" for="description">Description</label>
+            <textarea class="form-control" name="description" placeholder="Goods Description">{{ request.form['description'] }}</textarea>
+            <button class="btn btn-primary mt-3" type="submit">Submit</button>
+        </div>
+    </form>
+{% endblock main %}
